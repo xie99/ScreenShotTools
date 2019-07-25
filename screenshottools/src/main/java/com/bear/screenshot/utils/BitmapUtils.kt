@@ -59,7 +59,7 @@ fun combineBitmapsIntoOnlyOne(
  *
  * @param context 用于通知重新扫描文件系统，为提升性能可去掉
  */
-fun savingBitmapIntoFile(context: Context?, bitmap: Bitmap?, callBack: IScreenShotCallBack?) {
+fun savingBitmapIntoFile(context: Context?, bitmap: Bitmap?, fileName:String? = null,callBack: IScreenShotCallBack?) {
     if (context == null || (context is Activity && context.isFinishing)) {
         return
     }
@@ -91,8 +91,8 @@ fun savingBitmapIntoFile(context: Context?, bitmap: Bitmap?, callBack: IScreenSh
         // 获取内存路径
         // 设置图片路径+命名规范
         // 声明输出文件
-        val storagePath = Environment.getExternalStorageDirectory().absolutePath
-        val fileTitle = "Screenshot_" + data + "_biz.jpg"
+        val storagePath = Environment.getDataDirectory().absolutePath
+        val fileTitle = (fileName ?: data) + ".jpg"
         val filePath = "$storagePath/DCIM/"
         val fileAbsolutePath = filePath + fileTitle
         val file = File(fileAbsolutePath)

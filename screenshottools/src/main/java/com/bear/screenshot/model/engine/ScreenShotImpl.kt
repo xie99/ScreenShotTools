@@ -22,12 +22,12 @@ class ScreenShotImpl(bitmapConvert: IBitmapConvert) : IScreenShot {
 
     private var mBitmapConvert = bitmapConvert
 
-    override fun takeCapture(context: Context, view: View, callBack: IScreenShotCallBack?) {
+    override fun takeCapture(context: Context, view: View,fileName:String?, callBack: IScreenShotCallBack?) {
         if (context is Activity && context.isFinishing) return
         mBitmapConvert.convert(view, object : IBitmapConvertCallBack {
             override fun onResult(bitmap: Bitmap?) {
                 bitmap?.let {
-                    savingBitmapIntoFile(context, it, callBack)
+                    savingBitmapIntoFile(context, it, fileName,callBack)
                 }
             }
         })

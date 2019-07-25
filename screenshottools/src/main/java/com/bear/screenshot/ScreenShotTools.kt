@@ -19,7 +19,7 @@ class ScreenShotTools private constructor() {
         ScreenShotImpl(BitmapConvertImpl())
     }
 
-    fun takeCapture(context: Context, view: View,fileName:String?, callBack: IScreenShotCallBack?) {
+    fun takeCapture(context: Context,fileName:String?, view: View, callBack: IScreenShotCallBack?) {
         screenShot.takeCapture(context, fileName,view,callBack)
     }
 

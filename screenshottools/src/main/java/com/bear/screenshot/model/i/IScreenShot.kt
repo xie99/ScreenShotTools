@@ -12,7 +12,7 @@ import android.view.View
  */
 interface IScreenShot {
 
-    fun takeCapture(context: Context,view: View,callBack: IScreenShotCallBack?)
+    fun takeCapture(context: Context,fileName:String?,view: View,callBack: IScreenShotCallBack?)
 
     fun takeCapture(context: Context,view: View,topBitmap:Bitmap?,callBack: IScreenShotCallBack?)
 

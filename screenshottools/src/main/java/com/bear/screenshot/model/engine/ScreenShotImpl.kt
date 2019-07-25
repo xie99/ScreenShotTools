@@ -22,7 +22,7 @@ class ScreenShotImpl(bitmapConvert: IBitmapConvert) : IScreenShot {
 
     private var mBitmapConvert = bitmapConvert
 
-    override fun takeCapture(context: Context, view: View,fileName:String?, callBack: IScreenShotCallBack?) {
+    override fun takeCapture(context: Context,fileName:String?, view: View, callBack: IScreenShotCallBack?) {
         if (context is Activity && context.isFinishing) return
         mBitmapConvert.convert(view, object : IBitmapConvertCallBack {
             override fun onResult(bitmap: Bitmap?) {
@@ -36,7 +36,7 @@ class ScreenShotImpl(bitmapConvert: IBitmapConvert) : IScreenShot {
 
     override fun takeCapture(context: Context, view: View, topBitmap: Bitmap?, callBack: IScreenShotCallBack?) {
         if (topBitmap == null) {
-            takeCapture(context, view, callBack)
+            takeCapture(context,null, view,callBack = callBack)
             return
         }
         mBitmapConvert.convert(view, object : IBitmapConvertCallBack {
@@ -51,7 +51,7 @@ class ScreenShotImpl(bitmapConvert: IBitmapConvert) : IScreenShot {
                         context.resources.displayMetrics.widthPixels,
                         ScreenShotConfig.MAX_SCREEN_SHOT_HEIGHT
                     )
-                    savingBitmapIntoFile(context, combineBitmap, callBack)
+                    savingBitmapIntoFile(context, combineBitmap, callBack = callBack)
                 }
             }
         })
@@ -65,7 +65,7 @@ class ScreenShotImpl(bitmapConvert: IBitmapConvert) : IScreenShot {
         callBack: IScreenShotCallBack?
     ) {
         if (topBitmap == null && bottomBitmap == null) {
-            takeCapture(context, view, callBack)
+            takeCapture(context,null, view, callBack)
             return
         }
         mBitmapConvert.convert(view, object : IBitmapConvertCallBack {
@@ -85,7 +85,7 @@ class ScreenShotImpl(bitmapConvert: IBitmapConvert) : IScreenShot {
                         context.resources.displayMetrics.widthPixels,
                         ScreenShotConfig.MAX_SCREEN_SHOT_HEIGHT
                     )
-                    savingBitmapIntoFile(context, combineBitmap, callBack)
+                    savingBitmapIntoFile(context, combineBitmap, callBack = callBack)
                 }
             }
         })
@@ -100,7 +100,7 @@ class ScreenShotImpl(bitmapConvert: IBitmapConvert) : IScreenShot {
         callBack: IScreenShotCallBack?
     ) {
         if (topBitmap == null && bottomBitmap == null) {
-            takeCapture(context, view, callBack)
+            takeCapture(context,null, view, callBack)
             return
         }
         mBitmapConvert.convert(view, object : IBitmapConvertCallBack {
@@ -120,7 +120,7 @@ class ScreenShotImpl(bitmapConvert: IBitmapConvert) : IScreenShot {
                         width,
                         ScreenShotConfig.MAX_SCREEN_SHOT_HEIGHT
                     )
-                    savingBitmapIntoFile(context, combineBitmap, callBack)
+                    savingBitmapIntoFile(context, combineBitmap, callBack = callBack)
                 }
             }
         })

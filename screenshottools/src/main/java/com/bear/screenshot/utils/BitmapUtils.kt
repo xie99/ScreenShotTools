@@ -91,9 +91,9 @@ fun savingBitmapIntoFile(context: Context?, bitmap: Bitmap?, fileName:String? = 
         // 获取内存路径
         // 设置图片路径+命名规范
         // 声明输出文件
-        val storagePath = Environment.getDataDirectory().absolutePath
+        val storagePath = context.filesDir.absolutePath
         val fileTitle = (fileName ?: data) + ".jpg"
-        val filePath = "$storagePath/DCIM/"
+        val filePath = "$storagePath/"
         val fileAbsolutePath = filePath + fileTitle
         val file = File(fileAbsolutePath)
         /**
